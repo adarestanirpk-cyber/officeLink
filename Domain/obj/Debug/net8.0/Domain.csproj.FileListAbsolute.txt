@@ -5,6 +5,7 @@ D:\code\LinkProjectWithMB\LinkWithMB\Domain\obj\Debug\net8.0\Domain.GeneratedMSB
 D:\code\LinkProjectWithMB\LinkWithMB\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
 D:\code\LinkProjectWithMB\LinkWithMB\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
 D:\code\LinkProjectWithMB\LinkWithMB\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+D:\code\LinkProjectWithMB\LinkWithMB\Domain\obj\Debug\net8.0\Domain.sourcelink.json
 D:\code\LinkProjectWithMB\LinkWithMB\Domain\obj\Debug\net8.0\Domain.dll
 D:\code\LinkProjectWithMB\LinkWithMB\Domain\obj\Debug\net8.0\refint\Domain.dll
 D:\code\LinkProjectWithMB\LinkWithMB\Domain\obj\Debug\net8.0\Domain.pdb

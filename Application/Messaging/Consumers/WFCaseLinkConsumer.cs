@@ -1,4 +1,5 @@
-﻿using Application.Interfaces;
+﻿using Application.Extensions;
+using Application.Interfaces;
 using Application.Messaging.Contract;
 using MassTransit;
 using Microsoft.Extensions.Logging;
@@ -9,28 +10,31 @@ public class WFCaseLinkConsumer : IConsumer<WFCaseLinkCreated>
 {
     private readonly ILogger<WFCaseLinkConsumer> _logger;
     private readonly IWFCaseRepository _repository;
-    public WFCaseLinkConsumer(IWFCaseRepository repository,ILogger<WFCaseLinkConsumer> logger)
+    private readonly IWFCaseLinkService _service;
+    public WFCaseLinkConsumer(IWFCaseRepository repository,ILogger<WFCaseLinkConsumer> logger, IWFCaseLinkService service)
     {
         _logger = logger;
         _repository = repository;
+        _service = service;
     }
 
     public async Task Consume(ConsumeContext<WFCaseLinkCreated> context)
     {
         var msg = context.Message;
-        _logger.LogInformation("Received message: {SourceCaseId} -> {TargetCaseId}, CorrelationId: {Cid}",
+        _logger.LogInformation(
+            "Received message: {SourceCaseId} -> {TargetCaseId}, CorrelationId: {Cid}",
             msg.SourceCaseId, msg.TargetCaseId, msg.CorrelationId);
 
-        //var entity = new WFCaseLink
-        //{
-        //    Id = message.CaseId,
-        //    TargetCaseId = message.TargetCaseId,
-        //    TargetMainEntityId = message.TargetMainEntityId,
-        //    Status = Enum.Parse<WFCaseLinkStatus>(message.Status),
-        //    CreatedAt = message.CreatedAt
-        //};
-
-        //await _repository.AddAsync(entity);
-
+        try
+        {
+            Console.WriteLine($"Processing WFCaseLink {msg.SourceCaseId}");
+        }
+        catch (Exception ex)
+        {
+            var dto = msg.ToDto();
+            // ثبت incident و افزایش retry
+            await _service.AddIncidentAsync(dto, "PROCESS_FAILED", ex.Message);
+            await _service.IncrementRetryAsync(dto, 10); // retry بعد از 10 دقیقه
+        }
     }
 }

@@ -8,10 +8,10 @@ namespace Application.Services;
 public class RetryHandler : IRetryHandler
 {
     private readonly IWFCaseRepository _repository;
-    private readonly IClient _backOfficeClient;
+    private readonly IBackOfficeClient _backOfficeClient;
     private readonly ILogger<RetryHandler> _logger;
 
-    public RetryHandler(IWFCaseRepository repository, IClient backOfficeClient, ILogger<RetryHandler> logger)
+    public RetryHandler(IWFCaseRepository repository, IBackOfficeClient backOfficeClient, ILogger<RetryHandler> logger)
     {
         _repository = repository;
         _backOfficeClient = backOfficeClient;

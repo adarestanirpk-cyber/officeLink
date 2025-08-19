@@ -14,7 +14,7 @@ namespace BackOfficeAPI.Controllers;
 public class WFCaselinkController : Controller
 {
     private readonly IWFCaseRepository _repository;
-    private readonly IClient _backOfficeClient;
+    private readonly IFrontOfficeClient _frontOfficeClient;
     private readonly ILogger<WFCaselinkController> _logger;
     private readonly WFCaseDefaults _defaults;
     private readonly IConfiguration _configuration;
@@ -23,7 +23,7 @@ public class WFCaselinkController : Controller
 
     public WFCaselinkController(
         IWFCaseRepository repository,
-        IClient backOfficeClient,
+        IFrontOfficeClient frontOfficeClient,
         ILogger<WFCaselinkController> logger,
         IConfiguration configuration,
         IOptions<WFCaseDefaults> defaults,
@@ -31,7 +31,7 @@ public class WFCaselinkController : Controller
         IWFCaseLinkService wfCaseLinkService)
     {
         _repository = repository;
-        _backOfficeClient = backOfficeClient;
+        _frontOfficeClient = frontOfficeClient;
         _logger = logger;
         _configuration = configuration;
         _defaults = defaults.Value;
@@ -68,7 +68,7 @@ public class WFCaselinkController : Controller
 
                 //await _wFCaseLinkService.PublishLinkCreated(entity);
 
-                var boResult = await _backOfficeClient.SendLinkAsync(dto, ct);
+                var boResult = await _frontOfficeClient.SendLinkAsync(dto, ct);
 
                 entity.Status = boResult.Status;                 // معمولاً Completed
                 entity.TargetCaseId = boResult.TargetCaseId;     // اگر BO تعیین کند

@@ -13,7 +13,7 @@ namespace FrontOfficeAPI.Controllers;
 public class WFCaselinkController : Controller
 {
     private readonly IWFCaseRepository _repository;
-    private readonly IClient _frontOfficeClient;
+    private readonly IBackOfficeClient _backOfficeClient;
     private readonly ILogger<WFCaselinkController> _logger;
     private readonly IConfiguration _configuration;
     private readonly WFCaseDefaults _defaults;
@@ -22,14 +22,14 @@ public class WFCaselinkController : Controller
 
     public WFCaselinkController(
         IWFCaseRepository repository,
-        IClient frontOfficeClient,
+        IBackOfficeClient backOfficeClient,
         ILogger<WFCaselinkController> logger,
         IConfiguration configuration,
         IOptions<WFCaseDefaults> defaults,
         IWFCaseLinkService wFCaseLinkService)
     {
         _repository = repository;
-        _frontOfficeClient = frontOfficeClient;
+        _backOfficeClient = backOfficeClient;
         _logger = logger;
         _configuration = configuration;
         _defaults = defaults.Value;

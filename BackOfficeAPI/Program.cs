@@ -2,7 +2,7 @@ using Application.Interfaces;
 using Application.Services;
 using BackOfficeAPI.Extensions;
 using BackOfficeAPI.Middleware;
-using Infrastructure;
+using Infrastructure.BackOffice;
 using MassTransit;
 
 var builder = WebApplication.CreateBuilder(args);

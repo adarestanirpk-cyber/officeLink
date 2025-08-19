@@ -1,7 +1,7 @@
 using FrontOfficeAPI.Extensions;
 using FrontOfficeAPI.Middleware;
 using MassTransit;
-using Infrastructure;
+using Infrastructure.FrontOffice;
 
 var builder = WebApplication.CreateBuilder(args);
 

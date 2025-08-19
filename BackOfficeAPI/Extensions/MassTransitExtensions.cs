@@ -22,6 +22,8 @@ public static class MassTransitExtensions
                 cfg.ReceiveEndpoint("wfcaselink-queue", e =>
                 {
                     e.ConfigureConsumer<WFCaseLinkConsumer>(context);
+                    //one minute to send
+                    e.SetQueueArgument("x-message-ttl", 60000);
                 });
             });
         });
