@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "TYO5eccMziNnBigJUCDfiZyqPZwPLXVlvJQMtRugMo0=",
+  "Source": "FrontOfficeAPI",
+  "BasePath": "_content/FrontOfficeAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

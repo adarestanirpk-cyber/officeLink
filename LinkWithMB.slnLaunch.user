@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "BackOfficeAPI\\BackOfficeAPI.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "FrontOfficeAPI\\FrontOfficeAPI.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

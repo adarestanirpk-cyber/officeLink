@@ -1,0 +1,143 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "BackOfficeAPI",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/link": {
+      "post": {
+        "tags": [
+          "WFCaselink"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WFCaseLinkDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WFCaseLinkDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/WFCaseLinkDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/link/callbo": {
+      "post": {
+        "tags": [
+          "WFCaselink"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "WFCaseLinkDto": {
+        "type": "object",
+        "properties": {
+          "sourceCaseId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "linkType": {
+            "$ref": "#/components/schemas/WFCaseLinkType"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdByUserId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sourceMainEntityId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "status": {
+            "$ref": "#/components/schemas/WFCaseLinkStatus"
+          },
+          "sourceAppId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sourceMainEntityName": {
+            "type": "string",
+            "nullable": true
+          },
+          "sourceWFClassName": {
+            "type": "string",
+            "nullable": true
+          },
+          "targetCaseId": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "targetMainEntityId": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "targetAppId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "targetMainEntityName": {
+            "type": "string",
+            "nullable": true
+          },
+          "targetWFClassName": {
+            "type": "string",
+            "nullable": true
+          },
+          "processMetaDataJson": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WFCaseLinkStatus": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "WFCaseLinkType": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      }
+    }
+  }
+}

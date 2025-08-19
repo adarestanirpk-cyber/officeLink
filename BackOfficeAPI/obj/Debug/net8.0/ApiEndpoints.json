@@ -1,0 +1,28 @@
+[
+  {
+    "ContainingType": "BackOfficeAPI.Controllers.WFCaselinkController",
+    "Method": "Create",
+    "RelativePath": "api/link",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Application.DTOs.WFCaseLinkDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BackOfficeAPI.Controllers.WFCaselinkController",
+    "Method": "CallBO",
+    "RelativePath": "api/link/callbo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
