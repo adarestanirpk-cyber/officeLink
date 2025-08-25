@@ -1,5 +1,5 @@
-﻿//#define Sync
-#define Async
+﻿#define Sync
+//#define Async
 using Application.DTOs;
 using Application.Interfaces;
 using Application.Mappers;

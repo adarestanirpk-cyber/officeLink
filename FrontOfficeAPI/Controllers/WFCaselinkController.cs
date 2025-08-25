@@ -1,5 +1,5 @@
-﻿//#define Sync
-#define Async
+﻿#define Sync
+//#define Async
 using Application.DTOs;
 using Application.Interfaces;
 using Application.Mappers;
@@ -59,11 +59,11 @@ public class WFCaselinkController : Controller
             {
 #if Sync
                 //call API
-                var output = await _backOfficeClient.SendLinkAsync(dto,ct);
-                output.Status = WFCaseLinkStatus.Completed;
-                await _repository.UpdateAsync(output.ToEntity(), ct);
+                dto = await _backOfficeClient.SendLinkAsync(dto,ct);
+                dto.Status = WFCaseLinkStatus.Completed;
+                await _repository.UpdateAsync(dto.ToEntity(), ct);
 #elif Async
-                //this is the sending process
+                //this is the sending process via message broker
                 await _wFCaseLinkService.SendToBackOffice(entity);
                 //output.Status = WFCaseLinkStatus.Completed;
                 //await _repository.UpdateAsync(output.ToEntity(), ct);
@@ -93,7 +93,7 @@ public class WFCaselinkController : Controller
            SourceWFClassName = "Asset Registering",
            CreatedAt = DateTime.UtcNow,
            TargetAppId = Guid.NewGuid(),
-           TargetMainEntityName = "Government Registeration office",
+           TargetMainEntityName = "Taidddat",
            TargetWFClassName = "Government Asset Registering",
            CreatedByUserId = 111,
            LinkType = WFCaseLinkType.FOBO
