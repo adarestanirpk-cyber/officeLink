@@ -1,47 +1,101 @@
 ﻿using Application.DTOs;
+using Application.Extensions;
 using Application.Interfaces;
+using Application.Mappers;
 using Application.Messaging.Contract;
 using Domain.Entities;
+using Domain.ValueObjects;
 using MassTransit;
-using Application.Extensions;
-using Application.Mappers;
 
 namespace Application.Services;
 
 public class WFCaseLinkService: IWFCaseLinkService
 {
-    private readonly IPublishEndpoint _publishEndpoint;
+    private readonly IBus _bus;
     private readonly IWFCaseRepository _repository;
 
-    public WFCaseLinkService(IPublishEndpoint publishEndpoint, IWFCaseRepository repository)
+    public WFCaseLinkService(IBus bus, IWFCaseRepository repository)
     {
-        _publishEndpoint = publishEndpoint;
+        _bus = bus;
         _repository = repository;
     }
 
-    public async Task SendTestMessage()
+    public async Task SendToBackOffice(WFCaseLink entity)
     {
-        await _publishEndpoint.Publish(new WFCaseLinkCreated
+        var sendEndpoint = await _bus.GetSendEndpoint(
+            new Uri("queue:backoffice-wfcaselink-queue")
+        );
+
+        await sendEndpoint.Send(new WFCaseLinkCreated
         {
-            CreatedAt = DateTime.UtcNow,
-            CorrelationId = Guid.NewGuid().ToString()
+            SourceCaseId = entity.SourceCaseId,
+            TargetCaseId = entity.TargetCaseId ?? 0,
+            CreatedAt = entity.CreatedAt,
+            CorrelationId = Guid.NewGuid().ToString(),
+            LinkType = entity.LinkType,
+            CreatedByUserId = entity.CreatedByUserId,
+            SourceMainEntityId = entity.SourceMainEntityId,
+            Status = entity.Status,
+            SourceAppId = entity.SourceAppId,
+            SourceMainEntityName = entity.SourceMainEntityName,
+            SourceWFClassName = entity.SourceWFClassName,
+            TargetMainEntityId = entity.TargetMainEntityId,
+            TargetAppId = entity.TargetAppId,
+            TargetMainEntityName = entity.TargetMainEntityName,
+            TargetWFClassName = entity.TargetWFClassName,
+            ProcessMetaDataJson = entity.ProcessMetaDataJson
         });
     }
 
-    public async Task PublishLinkCreated(WFCaseLink entity)
+    public async Task SendToFrontOffice(WFCaseLink entity)
     {
-        await _publishEndpoint.Publish(new WFCaseLinkCreated
+        var sendEndpoint = await _bus.GetSendEndpoint(
+            new Uri("queue:frontoffice-wfcaselink-queue")
+        );
+
+        await sendEndpoint.Send(new WFCaseLinkCreated
         {
-            //CaseId = entity.Id,
-            //SourceCaseId = entity.SourceCaseId,
-            //SourceMainEntityId = entity.SourceMainEntityId,
-            //TargetCaseId = entity.TargetCaseId,
-            //TargetMainEntityId = entity.TargetMainEntityId,
-            //CreatedAt = entity.CreatedAt,
-            //Status = entity.Status.ToString(),
-            //CorrelationId = entity.CorrelationId ?? Guid.NewGuid().ToString()
+            SourceCaseId = entity.SourceCaseId,
+            TargetCaseId = entity.TargetCaseId ?? 0,
+            CreatedAt = entity.CreatedAt,
+            CorrelationId = Guid.NewGuid().ToString(),
+            LinkType = entity.LinkType,
+            CreatedByUserId = entity.CreatedByUserId,
+            SourceMainEntityId = entity.SourceMainEntityId,
+            Status = entity.Status,
+            SourceAppId = entity.SourceAppId,
+            SourceMainEntityName = entity.SourceMainEntityName,
+            SourceWFClassName = entity.SourceWFClassName,
+            TargetMainEntityId = entity.TargetMainEntityId,
+            TargetAppId = entity.TargetAppId,
+            TargetMainEntityName = entity.TargetMainEntityName,
+            TargetWFClassName = entity.TargetWFClassName,
+            ProcessMetaDataJson = entity.ProcessMetaDataJson
         });
     }
+
+    //public async Task PublishLinkCreated(WFCaseLink entity)
+    //{
+    //    await _publishEndpoint.Publish(new WFCaseLinkCreated
+    //    {
+    //        SourceCaseId = entity.SourceCaseId,
+    //        SourceMainEntityId = entity.SourceMainEntityId,
+    //        TargetCaseId = entity.TargetCaseId,
+    //        TargetMainEntityId = entity.TargetMainEntityId,
+    //        CreatedAt = entity.CreatedAt,
+    //        Status = entity.Status,
+    //        LinkType = entity.LinkType,
+    //        CreatedByUserId = entity.CreatedByUserId,
+    //        SourceAppId = entity.SourceAppId,
+    //        SourceMainEntityName = entity.SourceMainEntityName, 
+    //        SourceWFClassName=entity.TargetWFClassName,
+    //        TargetAppId=entity.TargetAppId,
+    //        TargetMainEntityName=entity.TargetMainEntityName,
+    //        TargetWFClassName=entity.TargetWFClassName,
+    //        ProcessMetaDataJson=entity.ProcessMetaDataJson,
+    //        CorrelationId = Guid.NewGuid().ToString()
+    //    });
+    //}
 
     public async Task IncrementRetryAsync(WFCaseLinkDto dto, int retryAfterMinutes = 5)
     {

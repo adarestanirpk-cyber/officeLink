@@ -5,7 +5,7 @@ namespace Application.Messaging.Contract;
 public record WFCaseLinkCreated
 {
     public long SourceCaseId { get; init; }
-    public int TargetCaseId { get; init; }
+    public long? TargetCaseId { get; init; }
     public DateTime CreatedAt { get; init; }
     public string CorrelationId { get; init; } = "";
     public WFCaseLinkType LinkType { get; set; }
@@ -21,3 +21,4 @@ public record WFCaseLinkCreated
     public string TargetWFClassName { get; set; } = "";
     public byte[]? ProcessMetaDataJson { get; set; } = Array.Empty<byte>();
 }
+

@@ -1,10 +1,3 @@
-D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\obj\Debug\net8.0\FrontOfficeAPI.csproj.AssemblyReference.cache
-D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\obj\Debug\net8.0\FrontOfficeAPI.GeneratedMSBuildEditorConfig.editorconfig
-D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\obj\Debug\net8.0\FrontOfficeAPI.AssemblyInfoInputs.cache
-D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\obj\Debug\net8.0\FrontOfficeAPI.AssemblyInfo.cs
-D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\obj\Debug\net8.0\FrontOfficeAPI.csproj.CoreCompileInputs.cache
-D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\obj\Debug\net8.0\FrontOfficeAPI.MvcApplicationPartsAssemblyInfo.cache
-D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\obj\Debug\net8.0\FrontOfficeAPI.sourcelink.json
 D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\bin\Debug\net8.0\appsettings.Development.json
 D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\bin\Debug\net8.0\appsettings.json
 D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\bin\Debug\net8.0\FrontOfficeAPI.staticwebassets.endpoints.json
@@ -184,7 +177,14 @@ D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\bin\Debug\net8.0\Infrastruct
 D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\bin\Debug\net8.0\Application.pdb
 D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\bin\Debug\net8.0\Infrastructure.pdb
 D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\bin\Debug\net8.0\Domain.pdb
+D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\obj\Debug\net8.0\FrontOfficeAPI.csproj.AssemblyReference.cache
+D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\obj\Debug\net8.0\FrontOfficeAPI.GeneratedMSBuildEditorConfig.editorconfig
+D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\obj\Debug\net8.0\FrontOfficeAPI.AssemblyInfoInputs.cache
+D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\obj\Debug\net8.0\FrontOfficeAPI.AssemblyInfo.cs
+D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\obj\Debug\net8.0\FrontOfficeAPI.csproj.CoreCompileInputs.cache
 D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\obj\Debug\net8.0\FrontOfficeAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\obj\Debug\net8.0\FrontOfficeAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\obj\Debug\net8.0\FrontOfficeAPI.sourcelink.json
 D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\obj\Debug\net8.0\scopedcss\bundle\FrontOfficeAPI.styles.css
 D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\obj\Debug\net8.0\staticwebassets.build.json
 D:\code\LinkProjectWithMB\LinkWithMB\FrontOfficeAPI\obj\Debug\net8.0\staticwebassets.development.json

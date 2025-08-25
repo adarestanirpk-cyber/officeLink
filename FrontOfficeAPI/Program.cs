@@ -2,6 +2,7 @@ using FrontOfficeAPI.Extensions;
 using FrontOfficeAPI.Middleware;
 using MassTransit;
 using Infrastructure.FrontOffice;
+using Domain.ValueObjects;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +15,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddFrontOfficeInfrastructure(builder.Configuration);
 
-builder.Services.AddRabbitMqWithConsumers();
+builder.Services.AddRabbitMqWithConsumers(builder.Configuration);
+
+builder.Services.Configure<WFCaseDefaults>(builder.Configuration.GetSection("WFCaseDefaults"));
 
 var app = builder.Build();
 

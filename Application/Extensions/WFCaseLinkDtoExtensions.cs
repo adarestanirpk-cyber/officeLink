@@ -1,5 +1,5 @@
 ﻿using Application.DTOs;
-using Domain.Entities;
+using Domain.ValueObjects;
 using System.Text.Json;
 
 namespace Application.Extensions;

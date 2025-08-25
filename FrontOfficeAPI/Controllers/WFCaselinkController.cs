@@ -1,8 +1,12 @@
-﻿using Application.DTOs;
+﻿//#define Sync
+#define Async
+using Application.DTOs;
 using Application.Interfaces;
 using Application.Mappers;
 using Domain.Entities;
 using Domain.Enums;
+using Domain.ValueObjects;
+using Infrastructure.FrontOffice.HttpClients;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
@@ -18,7 +22,6 @@ public class WFCaselinkController : Controller
     private readonly IConfiguration _configuration;
     private readonly WFCaseDefaults _defaults;
     private readonly IWFCaseLinkService _wFCaseLinkService;
-
 
     public WFCaselinkController(
         IWFCaseRepository repository,
@@ -36,7 +39,7 @@ public class WFCaselinkController : Controller
         _wFCaseLinkService = wFCaseLinkService;
     }
 
-    // POST: api/link
+    // POST: api/link in front
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] WFCaseLinkDto dto, CancellationToken ct)
     {
@@ -50,69 +53,55 @@ public class WFCaselinkController : Controller
         entity.Status = WFCaseLinkStatus.Created;
         await _repository.AddAsync(entity,ct);
 
-        //update targetCaseId and mainEntityId
-        // اگر MainEntityId داده نشده بود، یک عدد رندوم برای آن بساز
-        if (entity.TargetMainEntityId == null)
-        {
-            var random = new Random();
-            entity.TargetMainEntityId = random.Next(1000, 10000);
-        }
-
-        // اگر TargetCaseId داده نشده بود، یک عدد رندوم ۴ رقمی بساز
-        if (entity.TargetCaseId == null)
-        {
-            var random = new Random();
-            entity.TargetCaseId = random.Next(1000, 10000);
-        }
-
         if (!Request.Headers.TryGetValue("X-Origin", out var origin) || origin != "FrontOffice")
         {
-            //send link
             try
             {
-                //fill data from api
-                var responseDto = entity.ToDto();
-                responseDto.Status = entity.Status;
-                //create a random 4-digit number
-                var random = new Random();
-                responseDto.TargetCaseId = random.Next(1000, 10000);
-
-                await _wFCaseLinkService.PublishLinkCreated(entity);
-
-                //await _frontOfficeClient.SendLinkAsync(responseDto,ct);
+#if Sync
+                //call API
+                var output = await _backOfficeClient.SendLinkAsync(dto,ct);
+                output.Status = WFCaseLinkStatus.Completed;
+                await _repository.UpdateAsync(output.ToEntity(), ct);
+#elif Async
+                //this is the sending process
+                await _wFCaseLinkService.SendToBackOffice(entity);
+                //output.Status = WFCaseLinkStatus.Completed;
+                //await _repository.UpdateAsync(output.ToEntity(), ct);
+#endif
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error sending link to FrontOffice");
                 //change the state to failed
+                entity.Status = WFCaseLinkStatus.Failed;
                 await _repository.UpdateWFStateToFailed(entity);
             }
         }
-        return Ok(entity.ToDto());
+        return Ok(dto);
     }
 
     [HttpPost("callfo")]
     public async Task<IActionResult> CallFO(CancellationToken ct)
     {
-        WFCaseLinkDto dto = new WFCaseLinkDto();
-        dto.SourceCaseId = 5040;
-        dto.SourceMainEntityId = 456;
-        dto.SourceAppId = _defaults.SourceAppId;
-        dto.SourceMainEntityName = "Asset Registeration Office1";
-        dto.SourceWFClassName = "Asset Registering";
-
-        dto.TargetAppId = Guid.NewGuid();
-        dto.TargetMainEntityName = "Government Registeration office";
-        dto.TargetWFClassName = "Government Asset Registering";
-
-        dto.CreatedByUserId = 111;
-        dto.LinkType = WFCaseLinkType.FOBO;
+        //filling mock data
+        WFCaseLinkDto dto = new()
+        {
+           SourceCaseId = 5040,
+           SourceMainEntityId = 456,
+           SourceAppId = _defaults.SourceAppId,
+           SourceMainEntityName = "Asset Registeration Office1",
+           SourceWFClassName = "Asset Registering",
+           CreatedAt = DateTime.UtcNow,
+           TargetAppId = Guid.NewGuid(),
+           TargetMainEntityName = "Government Registeration office",
+           TargetWFClassName = "Government Asset Registering",
+           CreatedByUserId = 111,
+           LinkType = WFCaseLinkType.FOBO
+        };
 
         try
         {
-            // 🔹 مستقیم BO را صدا می‌زنیم (بدون ذخیره در دیتابیس FO)
-            var result = await Create(dto, ct); // فراخوانی داخلی متد Create
-
+            var result = await Create(dto, ct); 
             return Ok(result);
         }
         catch (Exception ex)

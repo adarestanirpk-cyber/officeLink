@@ -1,10 +1,3 @@
-D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\obj\Debug\net8.0\BackOfficeAPI.csproj.AssemblyReference.cache
-D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\obj\Debug\net8.0\BackOfficeAPI.GeneratedMSBuildEditorConfig.editorconfig
-D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\obj\Debug\net8.0\BackOfficeAPI.AssemblyInfoInputs.cache
-D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\obj\Debug\net8.0\BackOfficeAPI.AssemblyInfo.cs
-D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\obj\Debug\net8.0\BackOfficeAPI.csproj.CoreCompileInputs.cache
-D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\obj\Debug\net8.0\BackOfficeAPI.MvcApplicationPartsAssemblyInfo.cache
-D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\obj\Debug\net8.0\BackOfficeAPI.sourcelink.json
 D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\bin\Debug\net8.0\appsettings.Development.json
 D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\bin\Debug\net8.0\appsettings.json
 D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\bin\Debug\net8.0\BackOfficeAPI.staticwebassets.endpoints.json
@@ -184,7 +177,14 @@ D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\bin\Debug\net8.0\Infrastructu
 D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\bin\Debug\net8.0\Application.pdb
 D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\bin\Debug\net8.0\Infrastructure.pdb
 D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\bin\Debug\net8.0\Domain.pdb
+D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\obj\Debug\net8.0\BackOfficeAPI.csproj.AssemblyReference.cache
+D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\obj\Debug\net8.0\BackOfficeAPI.GeneratedMSBuildEditorConfig.editorconfig
+D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\obj\Debug\net8.0\BackOfficeAPI.AssemblyInfoInputs.cache
+D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\obj\Debug\net8.0\BackOfficeAPI.AssemblyInfo.cs
+D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\obj\Debug\net8.0\BackOfficeAPI.csproj.CoreCompileInputs.cache
 D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\obj\Debug\net8.0\BackOfficeAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\obj\Debug\net8.0\BackOfficeAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\obj\Debug\net8.0\BackOfficeAPI.sourcelink.json
 D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\obj\Debug\net8.0\scopedcss\bundle\BackOfficeAPI.styles.css
 D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\obj\Debug\net8.0\staticwebassets.build.json
 D:\code\LinkProjectWithMB\LinkWithMB\BackOfficeAPI\obj\Debug\net8.0\staticwebassets.development.json

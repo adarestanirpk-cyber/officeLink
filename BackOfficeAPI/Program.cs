@@ -16,7 +16,7 @@ builder.Services.AddSwaggerGen();
 //add message service
 builder.Services.AddScoped<IWFCaseLinkService,WFCaseLinkService>();
 
-builder.Services.AddRabbitMqWithConsumers();
+builder.Services.AddRabbitMqWithConsumers(builder.Configuration);
 
 builder.Services.AddBackOfficeInfrastructure(builder.Configuration);
 

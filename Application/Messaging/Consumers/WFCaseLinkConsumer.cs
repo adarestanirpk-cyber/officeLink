@@ -9,12 +9,10 @@ namespace Application.Messaging.Consumers;
 public class WFCaseLinkConsumer : IConsumer<WFCaseLinkCreated>
 {
     private readonly ILogger<WFCaseLinkConsumer> _logger;
-    private readonly IWFCaseRepository _repository;
     private readonly IWFCaseLinkService _service;
-    public WFCaseLinkConsumer(IWFCaseRepository repository,ILogger<WFCaseLinkConsumer> logger, IWFCaseLinkService service)
+    public WFCaseLinkConsumer(ILogger<WFCaseLinkConsumer> logger, IWFCaseLinkService service)
     {
         _logger = logger;
-        _repository = repository;
         _service = service;
     }
 
