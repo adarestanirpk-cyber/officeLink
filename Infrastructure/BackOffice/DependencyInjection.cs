@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Infrastructure.Persistence;
+using Infrastructure.FrontOffice.HttpClients;
 namespace Infrastructure.BackOffice;
 
 public static class DependencyInjection
@@ -37,6 +38,11 @@ public static class DependencyInjection
         services.AddHttpClient<IFrontOfficeClient, FrontOfficeClient>(client =>
         {
             client.BaseAddress = new Uri(configuration["FrontOfficeApi:BaseUrl"]!);
+        });
+
+        services.AddHttpClient<IBackOfficeClient, BackOfficeClient>(client =>
+        {
+            client.BaseAddress = new Uri(configuration["BackOfficeApi:BaseUrl"]!);
         });
 
         return services;

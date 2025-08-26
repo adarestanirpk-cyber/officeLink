@@ -18,7 +18,15 @@ public static class WFCaseLinkMapper
             SourceAppId = entity.SourceAppId,
             SourceMainEntityName = entity.SourceMainEntityName,
             SourceWFClassName = entity.SourceWFClassName,
+            EntityJson = entity.EntityJson,
+            ProcessMetaDataJson = entity.ProcessMetaDataJson,
+            TargetAppId = entity.TargetAppId,
+            TargetMainEntityId = entity.TargetMainEntityId,
+            TargetCaseId = entity.TargetCaseId,
+            TargetMainEntityName = entity.TargetMainEntityName,
+            TargetWFClassName = entity.TargetWFClassName,          
         };
+
     }
 
     public static WFCaseLink ToEntity(this WFCaseLinkDto dto)
@@ -34,13 +42,13 @@ public static class WFCaseLinkMapper
             SourceAppId = dto.SourceAppId,
             SourceMainEntityName = dto.SourceMainEntityName,
             SourceWFClassName = dto.SourceWFClassName,
-
-
             TargetMainEntityId = dto.TargetMainEntityId,
             TargetAppId = dto.TargetAppId != Guid.Empty ? dto.TargetAppId : Guid.NewGuid(),
             TargetMainEntityName = dto.TargetMainEntityName ?? "",
             TargetWFClassName = dto.TargetWFClassName ?? "",
-            ProcessMetaDataJson = dto.ProcessMetaDataJson ?? Array.Empty<byte>()
+            ProcessMetaDataJson = dto.ProcessMetaDataJson ?? Array.Empty<byte>(),
+            EntityJson= dto.EntityJson,
+            TargetCaseId= dto.TargetCaseId,
         };
     }
 }

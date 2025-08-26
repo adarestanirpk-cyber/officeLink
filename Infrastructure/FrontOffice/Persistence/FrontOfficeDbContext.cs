@@ -10,6 +10,7 @@ public class FrontOfficeDbContext : DbContext
     }
 
     public DbSet<WFCaseLink> WFCaseLinks { get; set; }
+    public DbSet<WorkflowEntity> WorkflowEntities { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -31,5 +32,15 @@ public class FrontOfficeDbContext : DbContext
             entity.Property(e => e.SourceWFClassName).HasMaxLength(200);
             entity.Property(e => e.TargetWFClassName).HasMaxLength(200);
         });
+
+        modelBuilder.Entity<WorkflowEntity>(entity =>
+        {
+            entity.ToTable("WorkflowEntity");
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.EntityJson)
+                  .HasColumnType("TEXT") // یا json در PostgreSQL
+                  .IsRequired();
+        });
+
     }
 }

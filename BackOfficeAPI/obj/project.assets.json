@@ -5918,11 +5918,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\code\\LinkProjectWithMB\\LinkWithMB\\BackOfficeAPI\\BackOfficeAPI.csproj",
+      "projectUniqueName": "D:\\code\\LinkWithMB\\BackOfficeAPI\\BackOfficeAPI.csproj",
       "projectName": "BackOfficeAPI",
-      "projectPath": "D:\\code\\LinkProjectWithMB\\LinkWithMB\\BackOfficeAPI\\BackOfficeAPI.csproj",
+      "projectPath": "D:\\code\\LinkWithMB\\BackOfficeAPI\\BackOfficeAPI.csproj",
       "packagesPath": "C:\\Users\\adarestani\\.nuget\\packages\\",
-      "outputPath": "D:\\code\\LinkProjectWithMB\\LinkWithMB\\BackOfficeAPI\\obj\\",
+      "outputPath": "D:\\code\\LinkWithMB\\BackOfficeAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5943,11 +5943,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\code\\LinkProjectWithMB\\LinkWithMB\\Application\\Application.csproj": {
-              "projectPath": "D:\\code\\LinkProjectWithMB\\LinkWithMB\\Application\\Application.csproj"
+            "D:\\code\\LinkWithMB\\Application\\Application.csproj": {
+              "projectPath": "D:\\code\\LinkWithMB\\Application\\Application.csproj"
             },
-            "D:\\code\\LinkProjectWithMB\\LinkWithMB\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "D:\\code\\LinkProjectWithMB\\LinkWithMB\\Infrastructure\\Infrastructure.csproj"
+            "D:\\code\\LinkWithMB\\Infrastructure\\Infrastructure.csproj": {
+              "projectPath": "D:\\code\\LinkWithMB\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }

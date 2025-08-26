@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces;
 using Application.Services;
+using Infrastructure.BackOffice.HttpClients;
 using Infrastructure.CrossCutting;
 using Infrastructure.FrontOffice.HttpClients;
 using Infrastructure.FrontOffice.Persistence;
@@ -34,6 +35,11 @@ public static class DependencyInjection
         services.AddHttpClient<IBackOfficeClient, BackOfficeClient>(client =>
         {
             client.BaseAddress = new Uri(configuration["BackOfficeApi:BaseUrl"]!);
+        });
+
+        services.AddHttpClient<IFrontOfficeClient, FrontOfficeClient>(client =>
+        {
+            client.BaseAddress = new Uri(configuration["FrontOfficeApi:BaseUrl"]!);
         });
 
         return services;

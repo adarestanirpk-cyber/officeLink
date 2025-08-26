@@ -5344,11 +5344,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\code\\LinkProjectWithMB\\LinkWithMB\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "D:\\code\\LinkWithMB\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "D:\\code\\LinkProjectWithMB\\LinkWithMB\\Infrastructure\\Infrastructure.csproj",
+      "projectPath": "D:\\code\\LinkWithMB\\Infrastructure\\Infrastructure.csproj",
       "packagesPath": "C:\\Users\\adarestani\\.nuget\\packages\\",
-      "outputPath": "D:\\code\\LinkProjectWithMB\\LinkWithMB\\Infrastructure\\obj\\",
+      "outputPath": "D:\\code\\LinkWithMB\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5369,11 +5369,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\code\\LinkProjectWithMB\\LinkWithMB\\Application\\Application.csproj": {
-              "projectPath": "D:\\code\\LinkProjectWithMB\\LinkWithMB\\Application\\Application.csproj"
+            "D:\\code\\LinkWithMB\\Application\\Application.csproj": {
+              "projectPath": "D:\\code\\LinkWithMB\\Application\\Application.csproj"
             },
-            "D:\\code\\LinkProjectWithMB\\LinkWithMB\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\code\\LinkProjectWithMB\\LinkWithMB\\Domain\\Domain.csproj"
+            "D:\\code\\LinkWithMB\\Domain\\Domain.csproj": {
+              "projectPath": "D:\\code\\LinkWithMB\\Domain\\Domain.csproj"
             }
           }
         }

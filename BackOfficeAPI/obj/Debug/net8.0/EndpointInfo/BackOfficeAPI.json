@@ -114,6 +114,10 @@
             "type": "string",
             "format": "byte",
             "nullable": true
+          },
+          "entityJson": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

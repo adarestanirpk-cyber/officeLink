@@ -42,4 +42,10 @@ public class WFCaseLink
             ProcessMetaDataJson = System.Text.Encoding.UTF8.GetBytes(jsonString);
         }
     }
+    /// <summary>
+    /// Payload containing the business entity data as JSON.
+    /// This is the schema-less contract transferred between FrontOffice and BackOffice.
+    /// Should contain fields like businessKeys, attributes, status, priority, attachments, etc.
+    /// </summary>
+    public string EntityJson { get; set; } = "{}";
 }
