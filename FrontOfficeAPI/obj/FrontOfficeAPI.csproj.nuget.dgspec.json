@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\code\\LinkWithMB\\FrontOfficeAPI\\FrontOfficeAPI.csproj": {}
+    "D:\\code\\LinkWithMB_20250826\\FrontOfficeAPI\\FrontOfficeAPI.csproj": {}
   },
   "projects": {
-    "D:\\code\\LinkWithMB\\Application\\Application.csproj": {
+    "D:\\code\\LinkWithMB_20250826\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\code\\LinkWithMB\\Application\\Application.csproj",
+        "projectUniqueName": "D:\\code\\LinkWithMB_20250826\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "D:\\code\\LinkWithMB\\Application\\Application.csproj",
+        "projectPath": "D:\\code\\LinkWithMB_20250826\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\adarestani\\.nuget\\packages\\",
-        "outputPath": "D:\\code\\LinkWithMB\\Application\\obj\\",
+        "outputPath": "D:\\code\\LinkWithMB_20250826\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\code\\LinkWithMB\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\code\\LinkWithMB\\Domain\\Domain.csproj"
+              "D:\\code\\LinkWithMB_20250826\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\code\\LinkWithMB_20250826\\Domain\\Domain.csproj"
               }
             }
           }
@@ -60,11 +60,11 @@
             },
             "Microsoft.Extensions.Hosting.Abstractions": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[9.0.0, )"
             },
             "Microsoft.Extensions.Logging.Abstractions": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[9.0.0, )"
             }
           },
           "imports": [
@@ -87,14 +87,14 @@
         }
       }
     },
-    "D:\\code\\LinkWithMB\\Domain\\Domain.csproj": {
+    "D:\\code\\LinkWithMB_20250826\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\code\\LinkWithMB\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\code\\LinkWithMB_20250826\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\code\\LinkWithMB\\Domain\\Domain.csproj",
+        "projectPath": "D:\\code\\LinkWithMB_20250826\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\adarestani\\.nuget\\packages\\",
-        "outputPath": "D:\\code\\LinkWithMB\\Domain\\obj\\",
+        "outputPath": "D:\\code\\LinkWithMB_20250826\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -152,14 +152,14 @@
         }
       }
     },
-    "D:\\code\\LinkWithMB\\FrontOfficeAPI\\FrontOfficeAPI.csproj": {
+    "D:\\code\\LinkWithMB_20250826\\FrontOfficeAPI\\FrontOfficeAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\code\\LinkWithMB\\FrontOfficeAPI\\FrontOfficeAPI.csproj",
+        "projectUniqueName": "D:\\code\\LinkWithMB_20250826\\FrontOfficeAPI\\FrontOfficeAPI.csproj",
         "projectName": "FrontOfficeAPI",
-        "projectPath": "D:\\code\\LinkWithMB\\FrontOfficeAPI\\FrontOfficeAPI.csproj",
+        "projectPath": "D:\\code\\LinkWithMB_20250826\\FrontOfficeAPI\\FrontOfficeAPI.csproj",
         "packagesPath": "C:\\Users\\adarestani\\.nuget\\packages\\",
-        "outputPath": "D:\\code\\LinkWithMB\\FrontOfficeAPI\\obj\\",
+        "outputPath": "D:\\code\\LinkWithMB_20250826\\FrontOfficeAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -180,11 +180,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\code\\LinkWithMB\\Application\\Application.csproj": {
-                "projectPath": "D:\\code\\LinkWithMB\\Application\\Application.csproj"
+              "D:\\code\\LinkWithMB_20250826\\Application\\Application.csproj": {
+                "projectPath": "D:\\code\\LinkWithMB_20250826\\Application\\Application.csproj"
               },
-              "D:\\code\\LinkWithMB\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "D:\\code\\LinkWithMB\\Infrastructure\\Infrastructure.csproj"
+              "D:\\code\\LinkWithMB_20250826\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "D:\\code\\LinkWithMB_20250826\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -241,14 +241,14 @@
         }
       }
     },
-    "D:\\code\\LinkWithMB\\Infrastructure\\Infrastructure.csproj": {
+    "D:\\code\\LinkWithMB_20250826\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\code\\LinkWithMB\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "D:\\code\\LinkWithMB_20250826\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "D:\\code\\LinkWithMB\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "D:\\code\\LinkWithMB_20250826\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\adarestani\\.nuget\\packages\\",
-        "outputPath": "D:\\code\\LinkWithMB\\Infrastructure\\obj\\",
+        "outputPath": "D:\\code\\LinkWithMB_20250826\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -269,11 +269,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\code\\LinkWithMB\\Application\\Application.csproj": {
-                "projectPath": "D:\\code\\LinkWithMB\\Application\\Application.csproj"
+              "D:\\code\\LinkWithMB_20250826\\Application\\Application.csproj": {
+                "projectPath": "D:\\code\\LinkWithMB_20250826\\Application\\Application.csproj"
               },
-              "D:\\code\\LinkWithMB\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\code\\LinkWithMB\\Domain\\Domain.csproj"
+              "D:\\code\\LinkWithMB_20250826\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\code\\LinkWithMB_20250826\\Domain\\Domain.csproj"
               }
             }
           }

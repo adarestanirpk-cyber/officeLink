@@ -3,6 +3,7 @@ using Application.Services;
 using BackOfficeAPI.Extensions;
 using BackOfficeAPI.Middleware;
 using Infrastructure.BackOffice;
+using Infrastructure.FrontOffice;
 using MassTransit;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,7 +20,7 @@ builder.Services.AddScoped<IWFCaseLinkService,WFCaseLinkService>();
 builder.Services.AddRabbitMqWithConsumers(builder.Configuration);
 
 builder.Services.AddBackOfficeInfrastructure(builder.Configuration);
-
+builder.Services.AddWorkflowService();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

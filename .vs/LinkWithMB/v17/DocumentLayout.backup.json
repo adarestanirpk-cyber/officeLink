@@ -1,26 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\code\\LinkWithMB\\",
+  "WorkspaceRootPath": "D:\\code\\LinkWithMB_20250826\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EA842949-93FA-427A-8ACA-B093A5705D17}|FrontOfficeAPI\\FrontOfficeAPI.csproj|d:\\code\\linkwithmb\\frontofficeapi\\controllers\\wfcaselinkcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA842949-93FA-427A-8ACA-B093A5705D17}|FrontOfficeAPI\\FrontOfficeAPI.csproj|solutionrelative:frontofficeapi\\controllers\\wfcaselinkcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FD1DFA68-10AD-4173-8A2B-160A36A7390A}|BackOfficeAPI\\BackOfficeAPI.csproj|d:\\code\\linkwithmb\\backofficeapi\\controllers\\wfcaselinkcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FD1DFA68-10AD-4173-8A2B-160A36A7390A}|BackOfficeAPI\\BackOfficeAPI.csproj|d:\\code\\linkwithmb_20250826\\backofficeapi\\controllers\\wfcaselinkcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FD1DFA68-10AD-4173-8A2B-160A36A7390A}|BackOfficeAPI\\BackOfficeAPI.csproj|solutionrelative:backofficeapi\\controllers\\wfcaselinkcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{797581A7-AD6E-4C13-AAAA-F99E29AAD8B5}|Infrastructure\\Infrastructure.csproj|d:\\code\\linkwithmb\\infrastructure\\backoffice\\httpclients\\frontofficeclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{797581A7-AD6E-4C13-AAAA-F99E29AAD8B5}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\backoffice\\httpclients\\frontofficeclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FD1DFA68-10AD-4173-8A2B-160A36A7390A}|BackOfficeAPI\\BackOfficeAPI.csproj|d:\\code\\linkwithmb\\backofficeapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{FD1DFA68-10AD-4173-8A2B-160A36A7390A}|BackOfficeAPI\\BackOfficeAPI.csproj|solutionrelative:backofficeapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA842949-93FA-427A-8ACA-B093A5705D17}|FrontOfficeAPI\\FrontOfficeAPI.csproj|d:\\code\\linkwithmb\\frontofficeapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{EA842949-93FA-427A-8ACA-B093A5705D17}|FrontOfficeAPI\\FrontOfficeAPI.csproj|solutionrelative:frontofficeapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{EA842949-93FA-427A-8ACA-B093A5705D17}|FrontOfficeAPI\\FrontOfficeAPI.csproj|d:\\code\\linkwithmb_20250826\\frontofficeapi\\controllers\\wfcaselinkcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA842949-93FA-427A-8ACA-B093A5705D17}|FrontOfficeAPI\\FrontOfficeAPI.csproj|solutionrelative:frontofficeapi\\controllers\\wfcaselinkcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,65 +22,29 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FrontOfficeClient.cs",
-              "DocumentMoniker": "D:\\code\\LinkWithMB\\Infrastructure\\BackOffice\\HttpClients\\FrontOfficeClient.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\BackOffice\\HttpClients\\FrontOfficeClient.cs",
-              "ToolTip": "D:\\code\\LinkWithMB\\Infrastructure\\BackOffice\\HttpClients\\FrontOfficeClient.cs",
-              "RelativeToolTip": "Infrastructure\\BackOffice\\HttpClients\\FrontOfficeClient.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA8AAAAWAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "WFCaselinkController.cs",
+              "DocumentMoniker": "D:\\code\\LinkWithMB_20250826\\FrontOfficeAPI\\Controllers\\WFCaselinkController.cs",
+              "RelativeDocumentMoniker": "FrontOfficeAPI\\Controllers\\WFCaselinkController.cs",
+              "ToolTip": "D:\\code\\LinkWithMB_20250826\\FrontOfficeAPI\\Controllers\\WFCaselinkController.cs",
+              "RelativeToolTip": "FrontOfficeAPI\\Controllers\\WFCaselinkController.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAgwHAAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-25T17:29:38.761Z"
+              "WhenOpened": "2025-08-26T15:07:35.198Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "WFCaselinkController.cs",
-              "DocumentMoniker": "D:\\code\\LinkWithMB\\FrontOfficeAPI\\Controllers\\WFCaselinkController.cs",
-              "RelativeDocumentMoniker": "FrontOfficeAPI\\Controllers\\WFCaselinkController.cs",
-              "ToolTip": "D:\\code\\LinkWithMB\\FrontOfficeAPI\\Controllers\\WFCaselinkController.cs",
-              "RelativeToolTip": "FrontOfficeAPI\\Controllers\\WFCaselinkController.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAAAEQAAABXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-25T17:27:44.688Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "WFCaselinkController.cs",
-              "DocumentMoniker": "D:\\code\\LinkWithMB\\BackOfficeAPI\\Controllers\\WFCaselinkController.cs",
+              "DocumentMoniker": "D:\\code\\LinkWithMB_20250826\\BackOfficeAPI\\Controllers\\WFCaselinkController.cs",
               "RelativeDocumentMoniker": "BackOfficeAPI\\Controllers\\WFCaselinkController.cs",
-              "ToolTip": "D:\\code\\LinkWithMB\\BackOfficeAPI\\Controllers\\WFCaselinkController.cs",
+              "ToolTip": "D:\\code\\LinkWithMB_20250826\\BackOfficeAPI\\Controllers\\WFCaselinkController.cs",
               "RelativeToolTip": "BackOfficeAPI\\Controllers\\WFCaselinkController.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAgwHAAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAACkAAAAAAAAAAAAQwDgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-25T17:27:44.704Z",
+              "WhenOpened": "2025-08-26T15:07:29.169Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\code\\LinkWithMB\\BackOfficeAPI\\appsettings.json",
-              "RelativeDocumentMoniker": "BackOfficeAPI\\appsettings.json",
-              "ToolTip": "D:\\code\\LinkWithMB\\BackOfficeAPI\\appsettings.json",
-              "RelativeToolTip": "BackOfficeAPI\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-25T17:28:22.367Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\code\\LinkWithMB\\FrontOfficeAPI\\appsettings.json",
-              "RelativeDocumentMoniker": "FrontOfficeAPI\\appsettings.json",
-              "ToolTip": "D:\\code\\LinkWithMB\\FrontOfficeAPI\\appsettings.json",
-              "RelativeToolTip": "FrontOfficeAPI\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-25T17:28:16.415Z"
             }
           ]
         },

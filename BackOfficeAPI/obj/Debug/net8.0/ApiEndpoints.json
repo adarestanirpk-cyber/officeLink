@@ -17,8 +17,8 @@
   },
   {
     "ContainingType": "BackOfficeAPI.Controllers.WFCaselinkController",
-    "Method": "CallBO",
-    "RelativePath": "api/link/callbo",
+    "Method": "CallFO",
+    "RelativePath": "api/link/callfo",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,

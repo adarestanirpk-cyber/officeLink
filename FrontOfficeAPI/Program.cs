@@ -19,6 +19,7 @@ builder.Services.AddRabbitMqWithConsumers(builder.Configuration);
 
 builder.Services.Configure<WFCaseDefaults>(builder.Configuration.GetSection("WFCaseDefaults"));
 
+builder.Services.AddWorkflowService();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

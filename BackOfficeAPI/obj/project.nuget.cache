@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "37/pm3QRg/U=",
+  "dgSpecHash": "J4LdZIt3WAc=",
   "success": true,
-  "projectFilePath": "D:\\code\\LinkWithMB\\BackOfficeAPI\\BackOfficeAPI.csproj",
+  "projectFilePath": "D:\\code\\LinkWithMB_20250826\\BackOfficeAPI\\BackOfficeAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\adarestani\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\adarestani\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
@@ -50,7 +50,7 @@
     "C:\\Users\\adarestani\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\9.0.8\\microsoft.extensions.fileproviders.abstractions.9.0.8.nupkg.sha512",
     "C:\\Users\\adarestani\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\9.0.8\\microsoft.extensions.fileproviders.physical.9.0.8.nupkg.sha512",
     "C:\\Users\\adarestani\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\9.0.8\\microsoft.extensions.filesystemglobbing.9.0.8.nupkg.sha512",
-    "C:\\Users\\adarestani\\.nuget\\packages\\microsoft.extensions.hosting.abstractions\\8.0.1\\microsoft.extensions.hosting.abstractions.8.0.1.nupkg.sha512",
+    "C:\\Users\\adarestani\\.nuget\\packages\\microsoft.extensions.hosting.abstractions\\9.0.0\\microsoft.extensions.hosting.abstractions.9.0.0.nupkg.sha512",
     "C:\\Users\\adarestani\\.nuget\\packages\\microsoft.extensions.http\\9.0.8\\microsoft.extensions.http.9.0.8.nupkg.sha512",
     "C:\\Users\\adarestani\\.nuget\\packages\\microsoft.extensions.logging\\9.0.8\\microsoft.extensions.logging.9.0.8.nupkg.sha512",
     "C:\\Users\\adarestani\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\9.0.8\\microsoft.extensions.logging.abstractions.9.0.8.nupkg.sha512",

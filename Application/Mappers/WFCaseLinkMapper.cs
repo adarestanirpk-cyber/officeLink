@@ -24,7 +24,8 @@ public static class WFCaseLinkMapper
             TargetMainEntityId = entity.TargetMainEntityId,
             TargetCaseId = entity.TargetCaseId,
             TargetMainEntityName = entity.TargetMainEntityName,
-            TargetWFClassName = entity.TargetWFClassName,          
+            TargetWFClassName = entity.TargetWFClassName,   
+            currentTaskId = entity.currentTaskId
         };
 
     }
@@ -49,6 +50,7 @@ public static class WFCaseLinkMapper
             ProcessMetaDataJson = dto.ProcessMetaDataJson ?? Array.Empty<byte>(),
             EntityJson= dto.EntityJson,
             TargetCaseId= dto.TargetCaseId,
+            currentTaskId= dto.currentTaskId,
         };
     }
 }

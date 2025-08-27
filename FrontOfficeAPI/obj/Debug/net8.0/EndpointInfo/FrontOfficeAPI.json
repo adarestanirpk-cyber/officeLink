@@ -36,7 +36,7 @@
         }
       }
     },
-    "/api/link/callfo": {
+    "/api/link/callbo": {
       "post": {
         "tags": [
           "WFCaselink"
@@ -117,6 +117,11 @@
           },
           "entityJson": {
             "type": "string",
+            "nullable": true
+          },
+          "currentTaskId": {
+            "type": "integer",
+            "format": "int64",
             "nullable": true
           }
         },

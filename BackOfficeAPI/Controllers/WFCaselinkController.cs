@@ -5,6 +5,7 @@ using System.Text.Json;
 using Application.DTOs;
 using Application.Interfaces;
 using Application.Mappers;
+using Application.Services;
 using Domain.Entities;
 using Domain.Enums;
 using Domain.ValueObjects;
@@ -12,6 +13,7 @@ using Infrastructure.FrontOffice.HttpClients;
 using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using static System.TimeZoneInfo;
 
 namespace BackOfficeAPI.Controllers;
 
@@ -26,6 +28,7 @@ public class WFCaselinkController : Controller
     private readonly WFCaseDefaults _defaults;
     private readonly IConfiguration _configuration;
     private readonly IWFCaseLinkService _wFCaseLinkService;
+    private readonly IWorkflowService _workflowService;
 
     public WFCaselinkController(
         IWFCaseRepository repository,
@@ -34,6 +37,7 @@ public class WFCaselinkController : Controller
         ILogger<WFCaselinkController> logger,
         IConfiguration configuration,
         IOptions<WFCaseDefaults> defaults,
+        IWorkflowService workflowService,
         IWFCaseLinkService wfCaseLinkService)
     {
         _repository = repository;
@@ -43,6 +47,7 @@ public class WFCaselinkController : Controller
         _configuration = configuration;
         _defaults = defaults.Value;
         _wFCaseLinkService = wfCaseLinkService;
+        _workflowService = workflowService;
     }
 
     // POST: api/link in back
@@ -51,52 +56,82 @@ public class WFCaselinkController : Controller
     {
         if (dto == null)
             return BadRequest("DTO cannot be null.");
-
-        //secure data
-        dto.Status = WFCaseLinkStatus.Created;
-        // تنظیم تاریخ ایجاد در صورت نبود مقدار
-        dto.CreatedAt = DateTime.UtcNow;
-        //save in database
-        WFCaseLink entity = dto.ToEntity();
-        //save in database
-        await _repository.AddAsync(entity, ct);
-
-        var cameFromFront = Request.Headers.TryGetValue("X-Origin", out var origin) && origin == "FrontOffice";
-        var cameFromBack = Request.Headers.TryGetValue("X-Origin", out origin) && origin == "BackOffice";
 #if Sync
         try
         {
+            var cameFromFront = Request.Headers.TryGetValue("X-Origin", out var origin) && origin == "FrontOffice";
+            var cameFromFrontProxy = Request.Headers.TryGetValue("X-Origin", out origin) && origin == "FrontOfficeProxy";
+            var cameFromBack = Request.Headers.TryGetValue("X-Origin", out origin) && origin == "BackOffice";
+            var cameFromBackProxy = Request.Headers.TryGetValue("X-Origin", out origin) && origin == "BackOfficeProxy";
 
-            if (cameFromFront)
+            // بررسی وجود رکورد قبلی i aدر DB
+            WFCaseLink? existing = null;
+            // بررسی رکورد قبلی فقط اگر FO هستیم
+            if ((cameFromFront || cameFromFrontProxy) && dto.currentTaskId != 0)
             {
-                // منبع: FrontOffice → پس اینجا Back گیرنده است → callEngine
-                var result = await callEnigne("domain", dto.CreatedByUserId, dto.TargetWFClassName, dto.EntityJson);
+                existing = await _repository.GetByTaskIdAsync(dto.currentTaskId, ct);
+            }
+
+            //secure data
+            dto.Status = WFCaseLinkStatus.Created;
+            // تنظیم تاریخ ایجاد در صورت نبود مقدار
+            dto.CreatedAt = dto.CreatedAt == default ? DateTime.UtcNow : dto.CreatedAt;
+            //save in database
+            WFCaseLink entity = dto.ToEntity();
+            //save in database
+            await _repository.AddAsync(entity, ct);
+
+
+            if (existing == null && !cameFromBack)
+            {
+                // ✅ هیچ رکوردی وجود ندارد → Create
+                var result = await _workflowService.CallEngineAsync(
+                    "domain",
+                    dto.CreatedByUserId,
+                    dto.TargetWFClassName,
+                    dto.EntityJson);
+
                 dto.TargetCaseId = result.TargetCaseId;
                 dto.TargetMainEntityId = result.TargetMainEntityId;
-                dto.Status = WFCaseLinkStatus.Completed;
+                dto.Status = WFCaseLinkStatus.Created;
             }
-            else if (cameFromBack)
+            else if (existing != null && !cameFromBack)
             {
-                // منبع: BackOffice → پس اینجا Front گیرنده است → callEngine
-                var result = await callEnigne("domain", dto.CreatedByUserId, dto.TargetWFClassName, dto.EntityJson);
-                dto.TargetCaseId = result.TargetCaseId;
-                dto.TargetMainEntityId = result.TargetMainEntityId;
-                dto.Status = WFCaseLinkStatus.Completed;
-            }
-            else
-            {
-                // درخواست داخلی (شروع‌کننده است)
-                dto.Status = WFCaseLinkStatus.InProgress;
+                // ✅ رکورد قبلی وجود دارد → Invoke
+                dto.TargetCaseId = existing.TargetCaseId;
+                dto.currentTaskId = existing.currentTaskId;
 
-                if (dto.LinkType == WFCaseLinkType.FOBO)
+                var invokeDto = new InvokeProcessDto
+                {
+                    Domain = "Domain",
+                    UserName = $"user-{dto.CreatedByUserId}",
+                    IdCase = Convert.ToInt32(dto.TargetCaseId),
+                    TaskId = Convert.ToInt32(dto.currentTaskId)
+                };
+
+                var result = await _workflowService.InvokeProcessAsync(invokeDto, TransitionType.Normal);
+                dto.TargetMainEntityId = result.WorkflowResponse?.TargetMainEntityId ?? dto.TargetMainEntityId;
+                dto.Status = WFCaseLinkStatus.Completed;
+            }
+
+            // ✅ ارسال لینک به طرف مقابل بدون ایجاد loopback
+            if (dto.LinkType == WFCaseLinkType.FOBO)
+            {
+                // FO → BO
+                if (cameFromBack || cameFromFrontProxy)
                 {
                     dto = await _backOfficeClient.SendLinkAsync(dto, ct);
                 }
-                else if (dto.LinkType == WFCaseLinkType.BOFO)
+            }
+            else if (dto.LinkType == WFCaseLinkType.BOFO)
+            {
+                // BO → FO
+                if (cameFromFront || cameFromBackProxy)
                 {
                     dto = await _frontOfficeClient.SendLinkAsync(dto, ct);
                 }
             }
+            // به‌روزرسانی رکورد در دیتابیس
             await _repository.UpdateAsync(dto.ToEntity(), ct);
 #elif Async
 
@@ -104,16 +139,19 @@ public class WFCaselinkController : Controller
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error sending link to FrontOffice");
+            _logger.LogError(ex, "Error in CreateOrInvoke");
             //change the state to failed
             await _repository.UpdateWFStateToFailed(dto.ToEntity(), ct);
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                new { error = "Error in CreateOrInvoke", details = ex.Message });
         }
-        //}
         return Ok(dto);
+
+
     }
 
-    [HttpPost("callbo")]
-    public async Task<IActionResult> CallBO(CancellationToken ct)
+    [HttpPost("callfo")]
+    public async Task<IActionResult> CallFO(CancellationToken ct)
     {
         //for mock data in json
         string json = @"{
@@ -141,11 +179,16 @@ public class WFCaselinkController : Controller
             TargetWFClassName = "AssetRegisterationOffice1",
             CreatedByUserId = 121,
             LinkType = WFCaseLinkType.BOFO,
-            EntityJson = json
+            EntityJson = json,
+            currentTaskId = 159
         };
 
         try
         {
+
+            // ✅ شبیه‌سازی هدر برای proxy
+            if (!Request.Headers.ContainsKey("X-Origin"))
+                Request.Headers.Add("X-Origin", "BackOfficeProxy");
             var result = await Create(dto, ct);
             return Ok(result);
         }
@@ -155,96 +198,5 @@ public class WFCaselinkController : Controller
             return StatusCode(StatusCodes.Status500InternalServerError,
                 new { error = "Error sending link to BackOffice", details = ex.Message });
         }
-
-        //WFCaseLinkDto dto = new WFCaseLinkDto();
-        //dto.SourceCaseId = 5040;
-        //dto.SourceMainEntityId = 456;
-        //dto.SourceAppId = _defaults.SourceAppId;
-        //dto.SourceMainEntityName = "Asset Registeration Office1";
-        //dto.SourceWFClassName = "Asset Registering";
-
-        //dto.TargetAppId = Guid.NewGuid();
-        //dto.TargetMainEntityName = "Government Registeration office";
-        //dto.TargetWFClassName = "Government Asset Registering";
-
-        //dto.CreatedByUserId = 111;
-        //dto.LinkType = WFCaseLinkType.FOBO;
-
-        ////for mock data in json
-        //string json = @"{
-        //  ""domain"": ""domain"",
-        //  ""userName"": ""adarestani"",
-        //  ""process"": ""process1"",
-        //  ""entityFields"": {
-        //    ""additionalProp1"": {
-        //      ""additionalProp1"": ""item1"",
-        //      ""additionalProp2"": ""item2"",
-        //      ""additionalProp3"": ""item3""
-        //    },
-        //    ""additionalProp2"": {
-        //      ""additionalProp1"": ""item4"",
-        //      ""additionalProp2"": ""item5"",
-        //      ""additionalProp3"": ""item6""
-        //    },
-        //    ""additionalProp3"": {
-        //      ""additionalProp1"": ""item7"",
-        //      ""additionalProp2"": ""item8"",
-        //      ""additionalProp3"": ""item9""
-        //    }
-        //  }
-        //}";
-        //dto.EntityJson = json;
-
-        //try
-        //{
-        //    // 🔹 مستقیم BO را صدا می‌زنیم (بدون ذخیره در دیتابیس FO)
-        //    var result = await Create(dto, ct); // فراخوانی داخلی متد Create
-
-        //    return Ok(result);
-        //}
-        //catch (Exception ex)
-        //{
-        //    _logger.LogError(ex, "Error in CallBO while sending link to BackOffice");
-        //    return StatusCode(StatusCodes.Status500InternalServerError,
-        //        new { error = "Error sending link to BackOffice", details = ex.Message });
-        //}
-    }
-
-    private async Task<WorkflowResponseDto> callEnigne(string DomainName, long userId, string TargetWFClassName, string EntityJson)
-    {
-        //convert EntityJson to callAriaEngine input parameters
-
-        //passing to entityFiel
-        var entityFields = ToEntityFieldsClass.ToEntityFields(EntityJson);
-
-        var dto = new CreateCaseDto
-        {
-            Domain = DomainName,
-            UserName = $"user-{userId}", 
-            Process = TargetWFClassName,
-            EntityFields = entityFields ?? new Dictionary<string, Dictionary<string, string>>()
-        };
-
-        ProcessResponse processResponse = await callAriaEnigne(dto);
-        return new WorkflowResponseDto()
-        {
-            TargetCaseId = processResponse.WorkflowResponse!.TargetCaseId,
-            TargetMainEntityId = processResponse.WorkflowResponse!.TargetMainEntityId
-        };
-    }
-
-    private async Task<ProcessResponse> callAriaEnigne(CreateCaseDto dto)
-    {
-        Random rnd = new Random();
-
-        ProcessResponse processResponse = new ()
-        {
-              WorkflowResponse = new WorkflowResponseDto()
-              {
-                  TargetCaseId = rnd.Next(1000, 10000),
-                  TargetMainEntityId = rnd.Next(1000, 10000)
-              }
-        };
-        return processResponse;
     }
 }

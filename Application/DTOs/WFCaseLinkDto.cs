@@ -117,5 +117,9 @@ public class WFCaseLinkDto
     /// Should contain fields like businessKeys, attributes, status, priority, attachments, etc.
     /// </summary>
     public string EntityJson { get; set; } = "{}";
+    /// <summary>
+    /// current task id which is saved in link 
+    /// </summary>
+    public long? currentTaskId { get; set; }
 }
 

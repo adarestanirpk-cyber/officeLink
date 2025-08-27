@@ -48,4 +48,5 @@ public class WFCaseLink
     /// Should contain fields like businessKeys, attributes, status, priority, attachments, etc.
     /// </summary>
     public string EntityJson { get; set; } = "{}";
+    public long? currentTaskId { get; set; }
 }

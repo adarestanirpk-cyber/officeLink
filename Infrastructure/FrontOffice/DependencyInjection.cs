@@ -44,4 +44,10 @@ public static class DependencyInjection
 
         return services;
     }
+    public static IServiceCollection AddWorkflowService(
+        this IServiceCollection services)
+    {
+        services.AddScoped<IWorkflowService, WorkflowService>();
+        return services;
+    }
 }

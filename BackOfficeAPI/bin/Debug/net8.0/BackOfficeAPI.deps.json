@@ -66,7 +66,7 @@
           "MassTransit.Abstractions": "8.5.2",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.8",
           "Microsoft.Extensions.Diagnostics.HealthChecks": "8.0.0",
-          "Microsoft.Extensions.Hosting.Abstractions": "8.0.1",
+          "Microsoft.Extensions.Hosting.Abstractions": "9.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "9.0.8",
           "Microsoft.Extensions.Options": "9.0.8"
         },
@@ -648,7 +648,7 @@
       "Microsoft.Extensions.Diagnostics.HealthChecks/8.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions": "8.0.0",
-          "Microsoft.Extensions.Hosting.Abstractions": "8.0.1",
+          "Microsoft.Extensions.Hosting.Abstractions": "9.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "9.0.8",
           "Microsoft.Extensions.Options": "9.0.8"
         }
@@ -686,7 +686,7 @@
           }
         }
       },
-      "Microsoft.Extensions.Hosting.Abstractions/8.0.1": {
+      "Microsoft.Extensions.Hosting.Abstractions/9.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Configuration.Abstractions": "9.0.8",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.8",
@@ -696,8 +696,8 @@
         },
         "runtime": {
           "lib/net8.0/Microsoft.Extensions.Hosting.Abstractions.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.1024.46610"
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.24.52809"
           }
         }
       },
@@ -1423,7 +1423,7 @@
         "dependencies": {
           "Domain": "1.0.0",
           "MassTransit": "8.5.2",
-          "Microsoft.Extensions.Hosting.Abstractions": "8.0.1",
+          "Microsoft.Extensions.Hosting.Abstractions": "9.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "9.0.8"
         },
         "runtime": {
@@ -1793,12 +1793,12 @@
       "path": "microsoft.extensions.filesystemglobbing/9.0.8",
       "hashPath": "microsoft.extensions.filesystemglobbing.9.0.8.nupkg.sha512"
     },
-    "Microsoft.Extensions.Hosting.Abstractions/8.0.1": {
+    "Microsoft.Extensions.Hosting.Abstractions/9.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-nHwq9aPBdBPYXPti6wYEEfgXddfBrYC+CQLn+qISiwQq5tpfaqDZSKOJNxoe9rfQxGf1c+2wC/qWFe1QYJPYqw==",
-      "path": "microsoft.extensions.hosting.abstractions/8.0.1",
-      "hashPath": "microsoft.extensions.hosting.abstractions.8.0.1.nupkg.sha512"
+      "sha512": "sha512-yUKJgu81ExjvqbNWqZKshBbLntZMbMVz/P7Way2SBx7bMqA08Mfdc9O7hWDKAiSp+zPUGT6LKcSCQIPeDK+CCw==",
+      "path": "microsoft.extensions.hosting.abstractions/9.0.0",
+      "hashPath": "microsoft.extensions.hosting.abstractions.9.0.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Http/9.0.8": {
       "type": "package",

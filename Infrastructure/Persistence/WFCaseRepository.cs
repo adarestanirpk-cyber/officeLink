@@ -1,6 +1,8 @@
-﻿using Application.Interfaces;
+﻿using Application.DTOs;
+using Application.Interfaces;
 using Domain.Entities;
 using Domain.ValueObjects;
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence;
@@ -13,6 +15,13 @@ public class WFCaseRepositoryBase<TContext> :IWFCaseRepository
     public WFCaseRepositoryBase(TContext context)
     {
         _context = context;
+    }
+
+    public async Task<WFCaseLink?> GetByTaskIdAsync(long? taskId, CancellationToken ct = default)
+    {
+        return await _context.Set<WFCaseLink>()
+                             .AsNoTracking()
+                             .FirstOrDefaultAsync(x => x.currentTaskId == taskId, ct);
     }
 
     // Get by Id
@@ -108,9 +117,14 @@ public class WFCaseRepositoryBase<TContext> :IWFCaseRepository
         await _context.SaveChangesAsync(ct);
     }
 
-    public Task<WorkflowCase?> GetByIdAsync(Guid id)
+    /// <summary>
+    /// دریافت WFCaseLink بر اساس TargetCaseId
+    /// </summary>
+    public async Task<WFCaseLink?> GetByCaseIdAsync(long targetCaseId, CancellationToken ct = default)
     {
-        throw new NotImplementedException();
+        return await _context.Set<WFCaseLink>()
+            .AsNoTracking() // برای جلوگیری از Tracking غیرضروری
+            .FirstOrDefaultAsync(x => x.TargetCaseId == targetCaseId, ct);
     }
 
 }

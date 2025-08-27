@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Application.DTOs;
+using Domain.Entities;
 
 namespace Application.Interfaces;
 
@@ -10,4 +11,6 @@ public interface IWFCaseRepository
     Task<WFCaseLink?> GetByIdAsync(Guid id, CancellationToken ct = default);
     Task UpdateWFStateToFailed(WFCaseLink wFCaseLink, CancellationToken ct = default);
     Task UpdateAsync(WFCaseLink wfCaseLink, CancellationToken ct = default);
+    Task<WFCaseLink?> GetByCaseIdAsync(long targetCaseId, CancellationToken ct = default);
+    Task<WFCaseLink?> GetByTaskIdAsync(long? taskId, CancellationToken ct = default);
 }
